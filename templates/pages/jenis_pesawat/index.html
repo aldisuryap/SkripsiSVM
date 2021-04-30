@@ -1,0 +1,70 @@
+{% extends 'layouts/app.html' %}
+
+{% block css %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/datatables.min.css') }}">
+{% endblock %}
+
+{% block content %} 
+    <div class="main-content">
+        <div class="container-fluid">
+            <!-- OVERVIEW -->
+            <div class="panel panel-headline">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Daftar Jenis Pesawat</h3>
+                </div>
+                <div class="panel-body">
+                    <a style="float: right;" data-toggle="modal" data-target="#createJenisPesawat" 
+                            class="btn btn-md btn-primary" 
+                            title="Create Jenis Pesawat.">
+                            <i class="fa fa-plus"></i>
+                        </a>
+                        <br><br>
+                    <div class="table-responsive">
+                        <table class="table table-striped table-hover datatable">
+                            <thead>
+                                <tr>
+                                    <th width="20">No</th>
+                                    <th>Nama</th>
+                                    <th width="80">Aksi</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for item in jenis_pesawat %}
+                                <tr>
+                                    <td>{{ loop.index }}</td>
+                                    <td>{{ item['nama_jenis_pesawat'] }}</td>
+                                    <td>
+                                        <a class="btn btn-sm btn-warning" 
+                                            href="#" data-toggle="modal" data-target="#editJenisPesawat_{{ item['id_jenis_pesawat'] }}"
+                                            itle="Edit Jenis Pesawat.">
+                                            <i class="fa fa-edit"></i>
+                                        </a>
+                                        <a class="btn btn-sm btn-danger" data-toggle="modal" 
+                                            data-target="#deleteJenisPesawat_{{ item['id_jenis_pesawat'] }}" 
+                                            href="#" title="Delete Jenis Pesawat.">
+                                            <i class="fa fa-trash"></i>
+                                        </a>
+                                    </td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% for item in jenis_pesawat %}
+        {% include 'pages/jenis_pesawat/modal/delete.html' %}
+        {% include 'pages/jenis_pesawat/modal/edit.html' %}
+    {% endfor %}
+    {% include 'pages/jenis_pesawat/modal/create.html' %}
+{% endblock %}
+{% block script %}
+    <script src="{{ url_for('static', filename='js/datatables.min.js') }}"></script>
+    <script>
+        $(document).ready(function() {
+            $('.datatable').DataTable();
+        } );
+    </script>
+{% endblock %}

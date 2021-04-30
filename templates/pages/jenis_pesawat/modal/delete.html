@@ -1,0 +1,23 @@
+<!-- Modal -->
+<div class="modal fade" id="deleteJenisPesawat_{{ item['id_jenis_pesawat'] }}" tabindex="-1" role="dialog" 
+    aria-labelledby="deleteJenisPesawatLabel_{{ item['id_jenis_pesawat']}}" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+            <h5 class="modal-title" id="exampleModalLabel">Delete Jenis Pesawat</h5>
+        </div>
+        <form action="/jenis_pesawat/{{ item['id_jenis_pesawat'] }}/delete" method="POST">
+            <div class="modal-body">
+                Are you sure you want to delete @{{ item['nama_jenis_pesawat'] }}?
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-empty" data-dismiss="modal">No</button>
+                <button type="submit" class="btn btn-danger">Yes</button>
+            </div>
+        </form>
+        </div>
+    </div>
+</div>

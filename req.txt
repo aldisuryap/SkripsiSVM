@@ -1,0 +1,11 @@
+pip install virtualenv
+virtualenv venv
+pip install flask
+pip install openpyxl
+pip install pymysql
+pip install xlrd
+pip install bcrypt
+pip install pandas
+pip install numpy
+python -m nltk.downloader 'punkt'
+pip python-dotenv

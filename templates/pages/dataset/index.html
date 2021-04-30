@@ -1,0 +1,87 @@
+{% extends 'layouts/app.html' %}
+
+{% block css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/datatables.min.css') }}">
+{% endblock %}
+
+{% block content %}
+<div class="main-content">
+    <div class="container-fluid">
+        <!-- OVERVIEW -->
+        <div class="panel panel-headline">
+            <div class="panel-heading">
+                <h3 class="panel-title">Dataset</h3>
+            </div>
+            <div class="panel-body">
+                <a href="/vupload" class="btn btn-primary">Tambah Data</a>
+                <br><br>
+                <div class="table-responsive">
+                    <table class="table table-striped table-hover datatable">
+                        <thead>
+                            <tr>
+                                <th width="20">No</th>
+                                <th>Nama</th>
+                                <th>Jenis</th>
+                                <th>Karakter</th>
+                                <th>Jenis Sayap</th>
+                                <th>Penempatan Sayap</th>
+                                <th>Jumlah Sayap</th>
+                                <th>Arah Sayap</th>
+                                <th>Jenis Mesin</th>
+                                <th>Jumlah Mesin</th>
+                                <th>Posisi Mesin</th>
+                                <th>Badan Pesawat</th>
+                                <th>Jenis Ekor</th>
+                                <th>Jenis Landing Gear</th>
+                                <!-- <th>Canard</th> -->
+                                <th>Persenjataan</th>
+                                <th>Warna</th>
+                                <th>Fusi Jenis Pesawat</th>
+                                <th>Fusi Karakter Pesawat</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for item in dataset %}
+                            <tr>
+                                <td>{{ loop.index }}</td>
+                                <td>{{ item['nama_pesawat'] }}</td>
+                                <td>{{ item['nama_jenis_pesawat'] }}</td>
+                                <td>{{ item['nama_karakter_pesawat'] }}</td>
+                                <td>{{ item['id_jenis_sayap'] }}</td>
+                                <td>{{ item['id_jenis_penempatan_sayap'] }}</td>
+                                <td>{{ item['id_jumlah_sayap'] }}</td>
+                                <td>{{ item['id_arah_sayap'] }}</td>
+                                <td>{{ item['id_jenis_mesin'] }}</td>
+                                <td>{{ item['id_jumlah_mesin'] }}</td>
+                                <td>{{ item['id_posisi_mesin'] }}</td>
+                                <td>{{ item['id_badan_pesawat'] }}</td>
+                                <td>{{ item['id_jenis_ekor'] }}</td>
+                                <td>{{ item['id_jenis_landing_gear'] }}</td>
+                                <!-- <td>{{ item['id_canard'] }}</td> -->
+                                <td>{{ item['id_persenjataan'] }}</td>
+                                <td>{{ item['id_warna'] }}</td>
+                                <td>{{ item['fusi_jenis_pesawat'] }}</td>
+                                <td>{{ item['fusi_karakter_pesawat'] }}</td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% for item in jenis_pesawat %}
+{% include 'pages/jenis_pesawat/modal/delete.html' %}
+{% include 'pages/jenis_pesawat/modal/edit.html' %}
+{% endfor %}
+{% include 'pages/jenis_pesawat/modal/create.html' %}
+{% endblock %}
+{% block script %}
+<script src="{{ url_for('static', filename='js/datatables.min.js') }}"></script>
+<script>
+    $(document).ready(function () {
+        $('.datatable').DataTable();
+    });
+</script>
+{% endblock %}

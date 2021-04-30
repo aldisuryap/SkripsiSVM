@@ -1,0 +1,258 @@
+{% extends 'layouts/app.html' %}
+
+{% block content %}
+<div class="main-content">
+    <div class="container-fluid">
+        <!-- OVERVIEW -->
+        <div class="panel panel-headline">
+            <div class="panel-heading">
+                <h3 class="panel-title">Form Input</h3>
+            </div>
+            <div class="panel-body">
+                <form action="/cekklasifikasisvm" method="POST" id="form">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label>Jenis Sayap</label>
+                                <select name="id_jenis_sayap" id="" class="form-control">
+                                    {% for item in spesifik %}
+                                    {% if item['id_karakteristik'] == 2 %}
+                                    <option value="{{ item['bit_spesifik'] }}">{{ item['spesifik'] }}</option>
+                                    {% endif %}
+                                    {% endfor %}
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label>Penempatan Sayap</label>
+                                <select name="id_penempatan_sayap" id="" class="form-control">
+                                    {% for item in spesifik %}
+                                    {% if item['id_karakteristik'] == 3 %}
+                                    <option value="{{ item['bit_spesifik'] }}">{{ item['spesifik'] }}</option>
+                                    {% endif %}
+                                    {% endfor %}
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label>Jumlah Sayap</label>
+                                <select name="id_jumlah_sayap" id="" class="form-control">
+                                    {% for item in spesifik %}
+                                    {% if item['id_karakteristik'] == 4 %}
+                                    <option value="{{ item['bit_spesifik'] }}">{{ item['spesifik'] }}</option>
+                                    {% endif %}
+                                    {% endfor %}
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label>Arah Sayap</label>
+                                <select name="id_arah_sayap" id="" class="form-control">
+                                    {% for item in spesifik %}
+                                    {% if item['id_karakteristik'] == 5 %}
+                                    <option value="{{ item['bit_spesifik'] }}">{{ item['spesifik'] }}</option>
+                                    {% endif %}
+                                    {% endfor %}
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label>Jenis Mesin</label>
+                                <select name="id_jenis_mesin" id="" class="form-control">
+                                    {% for item in spesifik %}
+                                    {% if item['id_karakteristik'] == 6 %}
+                                    <option value="{{ item['bit_spesifik'] }}">{{ item['spesifik'] }}</option>
+                                    {% endif %}
+                                    {% endfor %}
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label>Jumlah Mesin</label>
+                                <select name="id_jumlah_mesin" id="" class="form-control">
+                                    {% for item in spesifik %}
+                                    {% if item['id_karakteristik'] == 7 %}
+                                    <option value="{{ item['bit_spesifik'] }}">{{ item['spesifik'] }}</option>
+                                    {% endif %}
+                                    {% endfor %}
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label>Posisi Mesin</label>
+                                <select name="id_posisi_mesin" id="" class="form-control">
+                                    {% for item in spesifik %}
+                                    {% if item['id_karakteristik'] == 8 %}
+                                    <option value="{{ item['bit_spesifik'] }}">{{ item['spesifik'] }}</option>
+                                    {% endif %}
+                                    {% endfor %}
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label>Badan Pesawat</label>
+                                <select name="id_badan_pesawat" id="" class="form-control">
+                                    {% for item in spesifik %}
+                                    {% if item['id_karakteristik'] == 9 %}
+                                    <option value="{{ item['bit_spesifik'] }}">{{ item['spesifik'] }}</option>
+                                    {% endif %}
+                                    {% endfor %}
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label>Bentuk Ekor Pesawat</label>
+                                <select name="id_bentuk_ekor_pesawat" id="" class="form-control">
+                                    {% for item in spesifik %}
+                                    {% if item['id_karakteristik'] == 10 %}
+                                    <option value="{{ item['bit_spesifik'] }}">{{ item['spesifik'] }}</option>
+                                    {% endif %}
+                                    {% endfor %}
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label>Jenis Landing Gear</label>
+                                <select name="id_jenis_landing_gear" id="" class="form-control">
+                                    {% for item in spesifik %}
+                                    {% if item['id_karakteristik'] == 11 %}
+                                    <option value="{{ item['bit_spesifik'] }}">{{ item['spesifik'] }}</option>
+                                    {% endif %}
+                                    {% endfor %}
+                                </select>
+                            </div>
+                        </div>
+                        <!-- <div class="col-md-4">
+                            <div class="form-group">
+                                <label>Canard</label>
+                                <select name="id_canard" id="" class="form-control">
+                                    {% for item in spesifik %}
+                                    {% if item['id_karakteristik'] == 12 %}
+                                    <option value="{{ item['bit_spesifik'] }}">{{ item['spesifik'] }}</option>
+                                    {% endif %}
+                                    {% endfor %}
+                                </select>
+                            </div>
+                        </div> -->
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label>Persenjataan</label>
+                                <select name="id_persenjataan" id="" class="form-control">
+                                    {% for item in spesifik %}
+                                    {% if item['id_karakteristik'] == 13 %}
+                                    <option value="{{ item['bit_spesifik'] }}">{{ item['spesifik'] }}</option>
+                                    {% endif %}
+                                    {% endfor %}
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <label for="">Warna</label>
+                            <select name="id_warna" id="" class="form-control">
+                                {% for item in spesifik %}
+                                {% if item['id_karakteristik'] == 14 %}
+                                <option value="{{ item['bit_spesifik'] }}">{{ item['spesifik'] }}</option>
+                                {% endif %}
+                                {% endfor %}
+                            </select>
+                        </div>
+                    </div>
+                    <br><br>
+                    <button class="btn btn-primary" style="margin-right: 50px;">Cek Hasil Klasifikasi SVM</button>
+                    <br><br>
+                    <h3>Fusi Informasi Jenis Pesawat:</h3>
+                    <div id="fusi_jenis_pesawat">
+
+                    </div>
+                    <h3>Fusi Informasi Karakter Pesawat:</h3>
+                    <div id="fusi_karakter_pesawat">
+
+                    </div>
+                    <h3>Jenis Pesawat :</h3>
+                    <div id="hasilsvm">
+
+                    </div>
+
+                    <br><br>
+                    <a href="#" class="btn btn-primary" style="display: none;" id="fusi">Cek Hasil Identifikasi Fusi
+                        Informasi</a>
+                    <h3>Tipe Pesawat :</h3>
+                    <div id="hasil_identifikasi">
+                    </div>
+            </div>
+            </form>
+        </div>
+    </div>
+</div>
+</div>
+{% endblock %}
+{% block script %}
+<script>
+    $(document).ready(function () {
+        $("#form").submit(function (e) {
+            e.preventDefault()
+            $.ajax({
+                url: $(this).attr("action"),
+                type: $(this).attr("method"),
+                data: $(this).serialize(),
+                dataType: 'json',
+                beforeSend: function () {
+                    $("#hasilsvm").html(`<h4 class='text-primary'>Sedang Memproses...</h4>`)
+                    $("#fusi_jenis_pesawat").html(`<h4 class='text-primary'>Sedang Memproses...</h4>`)
+                    $("#fusi_karakter_pesawat").html(`<h4 class='text-primary'>Sedang Memproses...</h4>`)
+                    $("#hasil_identifikasi").html(`<h4 class='text-primary'>Sedang Memproses...</h4>`)
+                },
+                success: function (data) {
+                    $("#hasilsvm").empty()
+                    $("#hasilsvm").html(`<h4 class='text-danger'>` + data['jenis_pesawat'] + ' ' + data['karakter_pesawat'] + `</h4>`)
+                    $("#fusi_jenis_pesawat").empty()
+                    $("#fusi_jenis_pesawat").html(`<h4 class='text-danger'>` + data['fusi_jenis_pesawat'] + `</h4>`)
+                    $("#fusi_karakter_pesawat").empty()
+                    $("#fusi_karakter_pesawat").html(`<h4 class='text-danger'>` + data['fusi_karakter_pesawat'] + `</h4>`)
+                    $("#hasil_identifikasi").empty()
+                    if (data['identifikasi_pesawat'].length == 0) {
+                        $("#hasil_identifikasi").append("Tidak ada data pesawat yang sesuai dengan input")
+                    } else {
+                        var list = document.createElement("ul");
+                        $("#hasil_identifikasi").append(list)
+                        for (let i = 0; i < data['identifikasi_pesawat'].length; i++) {
+                            var newData = document.createElement("li");
+                            var textData = document.createTextNode(data['identifikasi_pesawat'][i]['nama']);
+                            newData.append(textData)
+                            list.append(newData)
+                        }
+                        $("#fusi").removeAttr("style")
+                    }
+                }
+            })
+        })
+        $("#fusi").on('click', function () {
+            $.ajax({
+                url: $(this).attr("href"),
+                data: $("#form").serialize(),
+                dataType: "json",
+                success: function () {
+
+                }
+            })
+        })
+    })
+</script>
+{% endblock %}

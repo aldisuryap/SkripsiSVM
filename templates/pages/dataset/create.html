@@ -1,0 +1,51 @@
+{% extends 'layouts/app.html' %}
+
+{% block content %} 
+    <div class="main-content">
+        <div class="container-fluid">
+            <!-- OVERVIEW -->
+            <div class="panel panel-headline">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Form Input</h3>
+                </div>
+                <div class="panel-body">
+                    <form action="/dataset/store" method="POST" id="form">
+                        <div class="row">
+                            {% for i in range(karakteristik|length) %}
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label>{{ karakteristik[i]['name'] }}</label>
+                                    <select name="{{ karakteristik[i]['name'] }}" id="" class="form-control">
+                                        {% for item in spesifik %}
+                                        {% if item['id_karakteristik'] == karakteristik[i]['id'] %}
+                                        <option value="{{ item['bit_spesifik'] }}">{{ item['spesifik'] }}</option>
+                                        {% endif %}
+                                        {% endfor %}
+                                    </select>
+                                </div>
+                            </div>    
+                            {% endfor %}
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label>Jenis Pesawat</label>
+                                    <select name="jenis_pesawat" id="" class="form-control">
+                                    {% for item in jenis_pesawat %}
+                                        <option value="{{ item['id_jenis_pesawat'] }}">{{ item['nama_jenis_pesawat'] }}</option>
+                                    {% endfor %}
+                                    </select>
+                                </div>
+                            </div>  
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label for="">Tipe Pesawat</label>
+                                    <input type="text" class="form-control" name="tipe_pesawat">
+                                </div>
+                            </div>
+                        </div>
+                        <button class="btn btn-info">Tambah</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

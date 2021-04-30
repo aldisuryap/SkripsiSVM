@@ -1,0 +1,76 @@
+{% extends 'layouts/app.html' %}
+
+{% block css %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/datatables.min.css') }}">
+{% endblock %}
+
+{% block content %} 
+    <div class="main-content">
+        <div class="container-fluid">
+            <!-- OVERVIEW -->
+            <div class="panel panel-headline">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Daftar Spesifik</h3>
+                </div>
+                <div class="panel-body">
+                    <a style="float: right;" data-toggle="modal" data-target="#createSpesifik" 
+                            class="btn btn-md btn-primary" 
+                            title="Create Spesifik.">
+                            <i class="fa fa-plus"></i>
+                        </a>
+                        <br><br>
+                    <div class="table-responsive">
+                        <table class="table table-striped table-hover datatable">
+                            <thead>
+                                <tr>
+                                    <th width="20">No</th>
+                                    <th>Karakteristik</th>
+                                    <th>Kode</th>
+                                    <th>Bagian Spesifik</th>
+                                    <th>16 Bit</th>
+                                    <th width="100">Aksi</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for item in spesifik %}
+                                <tr>
+                                    <td>{{ loop.index }}</td>
+                                    <td>{{ item['name'] }}</td>
+                                    <td>{{ item['kode_spesifik'] }}</td>
+                                    <td>{{ item['spesifik'] }}</td>
+                                    <td>{{ item['bit_spesifik'] }}</td>
+                                    <td>
+                                        <a class="btn btn-sm btn-warning" 
+                                            href="#" data-toggle="modal" data-target="#editSpesifik_{{ item['id_spesifik'] }}"
+                                            itle="Edit Spesifik.">
+                                            <i class="fa fa-edit"></i>
+                                        </a>
+                                        <a class="btn btn-sm btn-danger" data-toggle="modal" 
+                                            data-target="#deleteSpesifik_{{ item['id_spesifik'] }}" 
+                                            href="#" title="Delete Spesifik.">
+                                            <i class="fa fa-trash"></i>
+                                        </a>
+                                    </td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% for item in spesifik %}
+        {% include 'pages/spesifik/modal/delete.html' %}
+        {% include 'pages/spesifik/modal/edit.html' %}
+    {% endfor %}
+    {% include 'pages/spesifik/modal/create.html' %}
+{% endblock %}
+{% block script %}
+    <script src="{{ url_for('static', filename='js/datatables.min.js') }}"></script>
+    <script>
+        $(document).ready(function() {
+            $('.datatable').DataTable();
+        } );
+    </script>
+{% endblock %}

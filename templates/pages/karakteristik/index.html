@@ -1,0 +1,70 @@
+{% extends 'layouts/app.html' %}
+
+{% block css %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/datatables.min.css') }}">
+{% endblock %}
+
+{% block content %} 
+    <div class="main-content">
+        <div class="container-fluid">
+            <!-- OVERVIEW -->
+            <div class="panel panel-headline">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Daftar Karakteristik</h3>
+                </div>
+                <div class="panel-body">
+                    <a style="float: right;" data-toggle="modal" data-target="#createKarakteristik" 
+                            class="btn btn-md btn-primary" 
+                            title="Create Karakteristik.">
+                            <i class="fa fa-plus"></i>
+                        </a>
+                        <br><br>
+                    <div class="table-responsive">
+                        <table class="table table-striped table-hover datatable">
+                            <thead>
+                                <tr>
+                                    <th width="20">No</th>
+                                    <th>Nama</th>
+                                    <th width="80">Aksi</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for item in karakteristik %}
+                                <tr>
+                                    <td>{{ loop.index }}</td>
+                                    <td>{{ item['name'] }}</td>
+                                    <td>
+                                        <a class="btn btn-sm btn-warning" 
+                                            href="#" data-toggle="modal" data-target="#editKarakteristik_{{ item['id'] }}"
+                                            itle="Edit Karakteristik.">
+                                            <i class="fa fa-edit"></i>
+                                        </a>
+                                        <a class="btn btn-sm btn-danger" data-toggle="modal" 
+                                            data-target="#deleteKarakteristik_{{ item['id'] }}" 
+                                            href="#" title="Delete Karakteristik.">
+                                            <i class="fa fa-trash"></i>
+                                        </a>
+                                    </td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% for item in karakteristik %}
+        {% include 'pages/karakteristik/modal/delete.html' %}
+        {% include 'pages/karakteristik/modal/edit.html' %}
+    {% endfor %}
+    {% include 'pages/karakteristik/modal/create.html' %}
+{% endblock %}
+{% block script %}
+    <script src="{{ url_for('static', filename='js/datatables.min.js') }}"></script>
+    <script>
+        $(document).ready(function() {
+            $('.datatable').DataTable();
+        } );
+    </script>
+{% endblock %}
