@@ -88,22 +88,26 @@ def check(data):
         "karakter_pesawat": result_karakter,
         "identifikasi_pesawat": identifikasi_pesawat
     }
-
     return jsonify(res)
 
 
 def bin_to_decimal(binary):
     return int(binary, 2)
 
+# def normalize_decimal(val, max_val, min_val):
+#     return ((val - min_val)/(max_val - min_val))
 
 def scale_decimal(data, input_dec):
-    pdData = pd.DataFrame.from_dict(data)
+    pdData = pd.DataFrame.from_dict(data)    
     pdDataInput = pd.DataFrame({
         "dec_fusi": [input_dec]
-    })
+    })    
     pdData = pdData.append(pdDataInput, ignore_index=True)
+    # print(pdData)
     scaled = sc.fit_transform(pdData['dec_fusi'].values.reshape(-1, 1))
+    # print(scaled)
     pdData['norm'] = scaled.reshape(1, -1)[0]
+    print(pdData['norm'])
     return pdData[['nama', 'norm']]
 
 
